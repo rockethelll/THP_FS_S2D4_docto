@@ -1,0 +1,47 @@
+@startuml doctolib
+
+Class doctor {
+  id: int
+  first_name: text
+  last_name: text
+  zip_code: text
+}
+
+Class patient {
+  id: int
+  first_name: text
+  last_name: text
+}
+
+Class appointment {
+  id: int
+  date: datetime
+}
+
+Class city {
+  id: int
+  name: text
+}
+
+Class specialty {
+  id: int
+  name: text
+}
+
+Class join_doctor_specialty {
+  id: int
+  name: text
+  specialty_id: int
+  doctor_id: int
+}
+
+doctor "*" - "*" patient: peut avoir
+doctor "*" -- "1" appointment: possède
+patient "*" -- "1" appointment: poosède
+city "1" -- "*" patient: lié à
+city "1" -- "*" doctor: lié à
+join_doctor_specialty "*" - "1" doctor: possède
+specialty "1" -- "*" join_doctor_specialty: possède
+
+
+@enduml
